@@ -252,27 +252,27 @@ public class Main extends JavaPlugin implements Listener {
 						getConfig().set("lobby.location.y", p.getLocation().getBlockY());
 						getConfig().set("lobby.location.z", p.getLocation().getBlockZ());
 						this.saveConfig();
-						p.sendMessage(ChatColor.GREEN + "Saved Main lobby.");	
+						p.sendMessage(ChatColor.GREEN + "Successfully save main lobby!");	
 					}
 				}else if(args[0].equalsIgnoreCase("setcomponent")){
 					// /mp setcomponent [minigame] [component]
 					if(sender.hasPermission("mp.setup")){
 						if(args.length > 2){
 							this.saveComponentForMinigame(args[1], args[2], p.getLocation());
-							p.sendMessage(ChatColor.GREEN + "Saved component");
+							p.sendMessage(ChatColor.DARK_PURPLE + "SUCCESSFULLY SAVED COMPONENT");
 						}
 					}
 				}else if(args[0].equalsIgnoreCase("stats")){
-					sender.sendMessage(ChatColor.DARK_AQUA + "-- " + ChatColor.GOLD + "Statistics " + ChatColor.DARK_AQUA + "--");
+					sender.sendMessage(ChatColor.DARK_PURPLE + "-- " + ChatColor.DARK_PURPLE + "STATISTICS " + ChatColor.DARK_PURPLE + "--");
 					if(args.length > 1){
 						String player = args[1];
-						sender.sendMessage(ChatColor.GREEN + player + " has " + Integer.toString(this.getPlayerStats(player, "credits")) + " Credits.");
+						sender.sendMessage(ChatColor.DARK_PURPLE + player + " has " + Integer.toString(this.getPlayerStats(player, "credits")) + " Credits.");
 					}else{
 						String player = p.getName();
-						sender.sendMessage(ChatColor.GREEN + "You have " + Integer.toString(this.getPlayerStats(player, "credits")) + " Credits.");
+						sender.sendMessage(ChatColor.DARK_PURPLE + "YOU HAVE " + Integer.toString(this.getPlayerStats(player, "credits")) + " Credits.");
 					}
 				}else if(args[0].equalsIgnoreCase("list")){
-					sender.sendMessage(ChatColor.DARK_AQUA + "-- " + ChatColor.GOLD + "Minigames: " + ChatColor.DARK_AQUA + "--");
+					sender.sendMessage(ChatColor.DARK_AQUA + "-- " + ChatColor.DARK_AQUA + "Minigames: " + ChatColor.DARK_AQUA + "--");
 					for(Minigame m : minigames){
 						sender.sendMessage(ChatColor.DARK_AQUA + m.name);
 					}
@@ -293,7 +293,7 @@ public class Main extends JavaPlugin implements Listener {
 							minigames.get(currentmg).leave(p);
 						}
 						players.remove(p.getName());
-						p.sendMessage(ChatColor.RED + "You left the game.");
+						p.sendMessage(ChatColor.DARK_PURPLE.");
 						if(players.size() < min_players){
 							Bukkit.getScheduler().runTaskLater(this, new Runnable(){
 								public void run(){
@@ -724,7 +724,7 @@ public class Main extends JavaPlugin implements Listener {
 		
 		if(item_rewards){
 			int reward_ = r.nextInt((item_maxreward - item_minreward) + 1) + item_minreward;
-			p.sendMessage("§aYou earned " + Integer.toString(reward_) + " Diamonds this round. You'll get them at the end.");
+			p.sendMessage("ï¿½aYou earned " + Integer.toString(reward_) + " Diamonds this round. You'll get them at the end.");
 			if(rewardcount.containsKey(p.getName())){
 				reward_ += rewardcount.get(p.getName());
 			}
@@ -1294,7 +1294,7 @@ public class Main extends JavaPlugin implements Listener {
 					// nothing
 				}else{
 					event.setCancelled(true);
-					event.getPlayer().sendMessage("§3You're in MinigamesParty. Please use §6/mp leave §3to leave the minigame.");
+					event.getPlayer().sendMessage("ï¿½3You're in MinigamesParty. Please use ï¿½6/mp leave ï¿½3to leave the minigame.");
 				}
 			}
 		}
